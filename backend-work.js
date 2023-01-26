@@ -1,5 +1,3 @@
-const request = require('request')
-const JSSoup = require('jssoup').default;
 const axios = require('axios')
 const cheerio = require('cheerio');
 
