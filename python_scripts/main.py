@@ -107,7 +107,7 @@ if __name__ == "__main__":
         
         json_data = contents.decode("utf-8")
         data_obj = json.loads(json_data)
-        # product_name, email, trigger_price, product_url
+        # [product_name, email, trigger_price, product_url]
 
         target_price = int(data_obj.get("trigger_price", 100))
         cur_price = int(get_current_price(data_obj))
