@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Price Alert</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/x-icon" href="/images/price-tag-64.ico">
+</head>
+
+<body class="jumbotron">
+
+  <div class="container text-center">
+    <h1 class="display-5 fw-bold"> <b>Price Alert</b> </h1>
+    <h6 class="text-center mt-3 form-text text-muted">List your product's link with us and we'll notify you anytime that item is available at or below your target-price.</h6>
+    
+    <div class="jumbotron mt-0 pb-0 mx-lg-auto mx-md-auto mx-2 text-center col d-flex justify-content-center">
+      <div class="card py-5 mt-0 px-3 px-lg-5 px-md-5 w-lg-50" style="align-items: center;">
+          <form action="/" class="text-left" method="post">
+              <h4><b> Add Product </b></h4> <br>
+              <div class="mb-3">
+                <label class="form-label">Product Name</label>
+                <input type="text" class="form-control" autocomplete="off" autofocus required placeholder="Iphone 14 pro" name="product_name">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Product Link</label>
+                <input type="url" class="form-control" autocomplete="off" required placeholder="www.amazon.in/apple-iPhone-128gb-gold" name="product_url">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Your email</label>
+                <input type="email" class="form-control" required placeholder="your_email@example.com" name="email">
+              </div>
+              <div class="mb-5">
+                <label class="form-label">Trigger Price</label>
+                <input type="number" class="form-control" required placeholder="129000" name="trigger_price">
+              </div>
+
+              <small class="form-text text-muted"> 
+                <i class="fa fa-lock" style="color:#007BFF;"></i> 
+                Your details are confidential and never shared with anyone
+              </small>
+              <button type="submit" class="mt-3 btn btn-primary btn-block">Submit</button>
+          </form>
+      </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body> 
+
+</html>

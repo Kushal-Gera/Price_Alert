@@ -1,0 +1,27 @@
+{
+  "name": "web_projects",
+  "version": "1.0.0",
+  "description": "Price Tracker is a one stop solution for scheduling e-commerce product with a price tracker so to get notified when your price is available cheaper thna trigger price",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Kushal Gera",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.1301.0",
+    "axios": "^1.2.5",
+    "body-parser": "^1.20.1",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "firebase": "^9.16.0",
+    "firebase-admin": "^11.5.0",
+    "jssoup": "^0.0.15",
+    "lodash": "^4.17.21",
+    "python-shell": "^3.0.1",
+    "request": "^2.88.2",
+    "requests": "^0.3.0"
+  }
+}
