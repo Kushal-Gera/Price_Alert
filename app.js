@@ -66,7 +66,7 @@ app.get("/success", function (req, res) {
 });
 
 app.get("/error", function (req, res) {
-  res.render("error.ejs", {message_title:"Error occured.", message_text:"Please verify details and try again later."})
+  res.render("error.ejs", {message_title:"Error occured.", message_text:"An error occured while processing, please verify details or try again later."})
 });
 
 

@@ -4,17 +4,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="##007BFF">
     <title>Error</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/styles.css">
   </head>
 
-  <body>
-    <div class="jumbotron text-center m-5">
-      <h2><%=message_title%></h2>
-      <br><br>
-      <h5><%=message_text%>.</h5>
-      <br><br>
-      <a href="/" class="btn btn-primary btn-lg">Retry here</a>
+  <body class="jumbotron px-0 p-md-5">
+    <div class="text-center mx-0 m-md-5">
+      <div class="col-12 my-0 d-flex justify-content-center mt-5">
+        <div class="card w-lg-50 p-3" style="align-items: center;">
+
+          <h1 class="display-5 fw-bold"> <b><%=message_title%></b> </h1>
+          <h6 class="text-center mt-3 form-text text-muted"><%=message_text%></h6>
+          <br><br>
+          <a href="/" class="mt-5 btn btn-dark btn-lg">Retry here</a>
+        </div>
+      </div>
+
+
     </div>
 
   </body>
