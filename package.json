@@ -2,9 +2,10 @@
   "name": "web_projects",
   "version": "1.0.0",
   "description": "Price Tracker is a one stop solution for scheduling e-commerce product with a price tracker so to get notified when your price is available cheaper thna trigger price",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
   },
   "author": "Kushal Gera",
   "license": "ISC",
