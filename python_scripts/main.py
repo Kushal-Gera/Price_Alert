@@ -118,4 +118,4 @@ if __name__ == "__main__":
             send_alert(data_obj)
             print(cur_price)
             print("Alerted for 1 product")
-            s3.delete_object(Bucket=AWS_BUCKET_NAME, Key=key)
+            # s3.delete_object(Bucket=AWS_BUCKET_NAME, Key=key)
