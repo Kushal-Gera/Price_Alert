@@ -46,10 +46,11 @@ app.post("/", async function (req, res) {
           
           s3.putObject(params, function(err, data){
             if (err) {
-              // console.log(err)
+              console.log(err)
               res.redirect("/error")
+              return
             }
-            // console.log(data)
+            console.log(data)
             res.redirect("/success")
           })
         }else{
