@@ -66,7 +66,12 @@ def stop_ec2():
     cnt = 1
     while cnt <= 3:
         try:
-            ec2 = boto3.client('ec2', region_name=REGION)
+            ec2 = boto3.client(
+                'ec2', 
+                aws_access_key_id=AWS_ACCESS_KEY_ID,
+                aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
+                region_name=REGION,
+            )
             ec2.stop_instances(InstanceIds = [INSTANCE_ID])
             cnt = 100
         except:
