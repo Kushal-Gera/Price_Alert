@@ -28,7 +28,7 @@ function get_platform_name(url){
             return pf
     }
 
-    return PLATFORMS[0]
+    return PLATFORMS[3]
 }
 
 async function is_prod_valid(url) {
@@ -37,7 +37,7 @@ async function is_prod_valid(url) {
             const config = {
                 headers:{"User-Agent" : u}
             };
-            
+
             const {data} = await axios.get(url, config);
             let platform = get_platform_name(url)
             console.log(platform)
@@ -77,12 +77,10 @@ async function is_prod_valid(url) {
             // console.log(content)
             return (content.length>0)
         }
-    
     } catch (error) {
         // console.log(error)
         return false
     }
-    
     return false
 }
 
