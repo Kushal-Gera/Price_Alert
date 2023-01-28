@@ -40,7 +40,7 @@ async function is_prod_valid(url) {
             
             const {data} = await axios.get(url, config);
             let platform = get_platform_name(url)
-            // console.log(platform)
+            console.log(platform)
             
             const $ = cheerio.load(data);
             const content = [];
