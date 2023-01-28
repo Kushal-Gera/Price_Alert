@@ -3,6 +3,10 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import boto3
 import json
+import os
+from email.message import EmailMessage
+import ssl
+import smtplib
 
 
 
@@ -39,9 +43,18 @@ USER_AGENTS = [
         ('Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'), 
     ]
 
+
+# AWS_ACCESS_KEY_ID=os.environ.get("AWS_ACCESS_KEY_ID")
+# AWS_SECRET_ACCESS_KEY=os.environ.get("AWS_SECRET_ACCESS_KEY")
+# GOOGLE_ACC_KEY=os.environ.get("GOOGLE_ACC_KEY")
+
 AWS_ACCESS_KEY_ID="AKIASKNBV4DMGVMSCPW2"
 AWS_SECRET_ACCESS_KEY="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"
+GOOGLE_ACC_KEY="hgmiqwkxpeugtslj"
+
+MY_WEBSITE_URL="https://price-alert-od1v.onrender.com/"
 AWS_BUCKET_NAME="my-products-for-alert"
+SENDER_EMAIL="kushalgera1999@gmail.com"
 
 
 
@@ -64,7 +77,7 @@ def get_main_url(original_url):
 def get_current_price(data):
     url = data.get("product_url", "")
     platform_name = get_platform_name(get_main_url(url))
-    
+    data['platform_name'] = platform_name
 
     for u in USER_AGENTS:
         HEADERS = {"User-Agent" : u}
@@ -86,9 +99,43 @@ def get_current_price(data):
         return price
     return -1
 
+def send_alert(data, cur_price):
+    try:
+        email = data.get("email", "")
+        product_name = data.get("product_name", "").upper()
+        product_url = data.get("product_url", "")
+        platform_name = data.get("platform_name", "").upper()
 
-def send_alert(data):
-    pass
+        subject = f"Hurrayy... {product_name} is at a discount!!"
+        body = f'''
+Hello dear user,
+This is an automated alert from Price-Alert for {product_name}.
+
+Your listed product '{product_name}' is currently on discount at just ₹{cur_price}.
+
+
+Buy directly from {platform_name} -> {product_url}.
+
+
+List more products with us, visit us back at {MY_WEBSITE_URL}.
+    '''
+
+
+        em = EmailMessage()
+        em['From'] = SENDER_EMAIL
+        em["To"] = email
+        em["Subject"] = subject
+        em.set_content(body)
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+            smtp.login(SENDER_EMAIL, GOOGLE_ACC_KEY)
+            smtp.sendmail(SENDER_EMAIL, email, em.as_string())
+            print("Alert sent.")
+            return True
+    except:
+        return False
+    return False
 
 
 
@@ -107,7 +154,7 @@ if __name__ == "__main__":
         
         json_data = contents.decode("utf-8")
         data_obj = json.loads(json_data)
-        # [product_name, email, trigger_price, product_url]
+        # [product_name, email, trigger_price, product_url, platform_name]
 
         target_price = int(data_obj.get("trigger_price", 100))
         cur_price = int(get_current_price(data_obj))
@@ -115,7 +162,9 @@ if __name__ == "__main__":
         if cur_price == -1:
             print("Error occured in fetching")
         elif cur_price <= target_price:
-            send_alert(data_obj)
-            print(cur_price)
-            print("Alerted for 1 product")
-            # s3.delete_object(Bucket=AWS_BUCKET_NAME, Key=key)
+            if send_alert(data_obj, cur_price):
+                s3.delete_object(Bucket=AWS_BUCKET_NAME, Key=key)
+                print("Removed 1 product")
+            else:
+                print("Error occured while alerting")
+
