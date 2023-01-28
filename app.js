@@ -17,8 +17,10 @@ app.use(express.static("public"));
 
 
 const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  // secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  accessKeyId: "AKIASKNBV4DMGVMSCPW2",
+  secretAccessKey: "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",
 });
 
 
@@ -38,7 +40,8 @@ app.post("/", async function (req, res) {
     backendWork.is_prod_valid(req.body.product_url).then(is_valid => {
         if(is_valid){
           const params = {
-            Bucket: process.env.AWS_BUCKET_NAME,
+            // Bucket: process.env.AWS_BUCKET_NAME,
+            Bucket: "my-products-for-alert",
             Key: Date.now().toString(),
             Body: JSON.stringify(data_obj),
             ContentType: "application/json",
