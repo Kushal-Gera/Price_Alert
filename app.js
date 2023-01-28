@@ -5,9 +5,10 @@ const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const https = require("https");
 const lodash = require('lodash');
-const backendWork = require("./backend-work.js")
+// const backendWork = require("./backend-work.js")
+const backendWork = require(__dirname+"/backend-work.js")
 const AWS = require('aws-sdk');
-
+const PORT = process.env.POST || 3000;
 
 
 const app = express();
@@ -33,14 +34,12 @@ app.post("/", async function (req, res) {
     backendWork.is_prod_valid(req.body.product_url).then(is_valid => {
         if(is_valid){
           const s3 = new AWS.S3({
-            // accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-            // secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-            accessKeyId: "AKIASKNBV4DMGVMSCPW2",
-            secretAccessKey: "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",
+            accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+            secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
           });
 
           const params = {
-            // Bucket: process.env.AWS_BUCKET_NAME,
+            Bucket: process.env.AWS_BUCKET_NAME,
             Bucket: "my-products-for-alert",
             Key: Date.now().toString(),
             Body: JSON.stringify(data_obj),
@@ -75,6 +74,6 @@ app.get("/error", function (req, res) {
 
 
 
-app.listen(process.env.POST || 3000, function () {
+app.listen(PORT, function () {
   console.log("Server started on port 3000");
 });
