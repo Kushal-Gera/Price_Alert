@@ -53,10 +53,25 @@ AWS_SECRET_ACCESS_KEY="DK7evRi50xPG85vKsClxXp32iYlJSOxmBzc6NjJl"
 GOOGLE_ACC_KEY="hgmiqwkxpeugtslj"
 
 MY_WEBSITE_URL="https://price-alert-od1v.onrender.com/"
-AWS_BUCKET_NAME="my-products-for-alert"
 SENDER_EMAIL="kushalgera1999@gmail.com"
+AWS_BUCKET_NAME="my-products-for-alert"
+REGION = 'ap-south-1'
+INSTANCE_ID = "i-04308491c8b2a4dd9"
 
 
+
+def stop_ec2():
+    print("Stopping resources")
+
+    cnt = 1
+    while cnt <= 3:
+        try:
+            ec2 = boto3.client('ec2', region_name=REGION)
+            ec2.stop_instances(InstanceIds = [INSTANCE_ID])
+            cnt = 100
+        except:
+            print(f"EC2 instance cannot be stopped, retry count: {cnt}")
+            cnt += 1
 
 def get_platform_name(url):
     url = url.lower()
@@ -168,3 +183,4 @@ if __name__ == "__main__":
             else:
                 print("Error occured while alerting")
 
+    stop_ec2()
