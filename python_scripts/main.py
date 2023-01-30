@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import boto3
 import json
-import os
 from email.message import EmailMessage
 import ssl
 import smtplib
@@ -189,3 +188,4 @@ if __name__ == "__main__":
                 print("Error occured while alerting")
 
     stop_ec2()
+
