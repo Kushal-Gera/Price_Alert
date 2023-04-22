@@ -1,9 +1,11 @@
 # Price-Alert [Product Notifier]
-### Price-Alert is an omni platform product  notifier based on the backbone of web-scarping. It essentially help users to get notifed when price of their saved products reaches at or below there target price threashold.
+
+### Checkout @ https://price-alert-od1v.onrender.com
+### Price-Alert is an e-commerce product notifier which allows us to save any product with a target price & get email alerts when they’re available cheaper.
 ### The webapp is powered by Render for hosting, and AWS for computational backend work.
 ---
-<br/>
 
+<br>
 
 ## Screenshots  
 
