@@ -10,7 +10,7 @@
 ## Screenshots  
 
 <table><tr><td>
-    <img src="https://user-images.githubusercontent.com/53964520/215278781-47e68a30-5c36-497d-a902-b672720e3104.png" />
+    <img src="https://github.com/Kushal-Gera/Price_Alert/assets/53964520/8fb09010-3a85-4e74-b252-de12828e59b5" />
 </td></tr></table>
 
 <table><tr><td>
