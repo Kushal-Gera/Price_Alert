@@ -8,7 +8,7 @@ const lodash = require("lodash");
 const request = require("request");
 const backendWork = require(__dirname + "/backend-work.js");
 const AWS = require("aws-sdk");
-const PORT = process.env.POST || 3000;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 app.set("view engine", "ejs");
